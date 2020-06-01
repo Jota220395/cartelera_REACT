@@ -31,7 +31,7 @@ class Menu extends React.Component{
                         <Search onsearch={this.props.onsearch} />
                     </div>
                     <div className="actions">
-                        <button onClick={this.add} className="button btn-blue">+ Añadir nuevo libro</button>
+                        <button onClick={this.add} className="button btn-red">+ Añadir nueva película</button>
                     </div>
                 </div>
                 {(this.state.newItemPanel)?

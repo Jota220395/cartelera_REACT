@@ -18,11 +18,11 @@
   padding: 8px;
   margin-right: 5px;
 }
-.btn-blue{
-  background-color:rgb(78, 127, 232);
+.btn-red{
+  background-color:rgb(10, 15, 27);
   color: white;
 }
 .btn-normal{
-  background-color:rgb(255, 255, 255);
-  color: rgb(82, 82, 82);
+  background-color:rgb(209, 114, 114);
+  color: rgb(14, 10, 10);
 }

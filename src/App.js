@@ -8,14 +8,17 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      books:[
-        {id:0, rating: 4, title: 'Harry Potter y el cáliz de fuego', image: 'libro01.jpg'},
-        {id:1, rating: 3, title: 'The shining', image: 'libro02.jpg'},
-        {id:2, rating: 5, title: 'Código Da Vinci', image: 'libro03.jpg'},
-        {id:3, rating: 5, title: 'El principito', image: 'libro04.jpg'},
-        {id:4, rating: 5, title: 'Sobrenatural', image: 'libro05.jpg'}
+      films:[
+        {id:0, rating: 4, title: 'Harry Potter y la cámara secreta', image: 'harry.jpeg'},
+        {id:1, rating: 3, title: 'El Resplandor', image: 'resplandor.jpg'},
+        {id:2, rating: 5, title: 'Los juegos del hambre', image: 'hambre.jpg'},
+        {id:3, rating: 5, title: 'No respires', image: 'respires.jpeg'},
+        {id:4, rating: 5, title: 'Zootropolis', image: 'zootropolis.jpg'},
+        {id:5, rating: 4, title: 'Shreck', image: 'shreck.jpg'},
+        {id:6, rating: 2, title: 'El Joker', image: 'joker.jpg'},
+        {id:7, rating: 1, title: 'Nosotros', image: 'nosotros.jpg'}
       ],
-      copyBooks: []
+      copyfilms: []
     };
 
     this.onSearch = this.onSearch.bind(this);
@@ -24,23 +27,23 @@ class App extends React.Component{
     this.updateRating = this.updateRating.bind(this);
   }
 
-  initBooks(){
-    //this.setState({copyBooks: [...this.state.books]});
+  initfilms(){
+    //this.setState({copyfilms: [...this.state.films]});
     this.setState((state,props) => ({
-      copyBooks: [...state.books]
+      copyfilms: [...state.films]
     }));
   }
 
   componentDidMount(){
-    this.initBooks();
+    this.initfilms();
   }
 
   onSearch(query){
     if(query === ''){
-      this.setState({copyBooks: [...this.state.books]});
+      this.setState({copyfilms: [...this.state.films]});
     }else{
 
-      const temp = [...this.state.books];
+      const temp = [...this.state.films];
       var res = [];
       temp.forEach(item =>{
         if(item.title.toLowerCase().indexOf(query) > -1){
@@ -48,42 +51,42 @@ class App extends React.Component{
         }
       });
     
-      this.setState({copyBooks: [...res]});
+      this.setState({copyfilms: [...res]});
     }
   }
 
   addItem(item){
-    var temp = [...this.state.books];
+    var temp = [...this.state.films];
     const id = temp[temp.length-1].id + 1;
     item['id'] = id;
     temp.push(item);
-    this.setState({books: [...temp]});
-    this.initBooks();
+    this.setState({films: [...temp]});
+    this.initfilms();
   }
 
   remove(id){
-    var temp = [...this.state.books];
+    var temp = [...this.state.films];
     const res = temp.filter(item => item.id != id);
-    this.setState({books: [...res]});
-    this.initBooks();
+    this.setState({films: [...res]});
+    this.initfilms();
   }
 
   updateRating(item){
-    var temp = [...this.state.books];
+    var temp = [...this.state.films];
     const index = temp.findIndex(x => x.id === item.id);
     temp[index].title = item.title;
     temp[index].image = item.image;
     temp[index].rating = item.rating;
 
-    this.setState({books: [...temp]});
-    this.initBooks();
+    this.setState({films: [...temp]});
+    this.initfilms();
   }
 
   render(){
     return (
       <div className="app">
-        <Menu title="Amozon" onsearch={this.onSearch} onadd={this.addItem} />
-        <List className="list" items={this.state.copyBooks} onremove={this.remove} onupdaterating={this.updateRating} />
+        <Menu title="Cartelera" onsearch={this.onSearch} onadd={this.addItem} />
+        <List className="list" items={this.state.copyfilms} onremove={this.remove} onupdaterating={this.updateRating} />
       </div>
     );
   }

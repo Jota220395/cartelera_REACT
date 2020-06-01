@@ -49,7 +49,7 @@ class PanelAdd extends React.Component{
                 <div className="new-item-panel">
                     <form onSubmit={this.createItem}>
                         <p>
-                        <label>Título del libro</label><br />
+                        <label>Título de la película</label><br />
                         <input type="text" name="title" className="input" onChange={this.onChangeTitle} />
                         </p>
 
@@ -68,7 +68,7 @@ class PanelAdd extends React.Component{
                             <option value="5">5</option>
                         </select>
                         </p>
-                        <input type="submit" className="button btn-blue" value="Registrar libro" />
+                        <input type="submit" className="button btn-red" value="Registrar película" />
                         <button className="button btn-normal" onClick={this.props.onhide}>Cancelar</button>
                     </form>
                 </div>
